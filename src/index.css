@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-green: #22c55e;
+  --color-brand-green-light: #86efac;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-slate-900 overflow-x-hidden;
+    background: radial-gradient(circle at 50% 50%, #f0fdf4 0%, #ffffff 100%);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #22c55e, #86efac);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #16a34a;
+  }
+}
+
+@layer components {
+  .glow-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .frosted-header {
+    @apply sticky top-0 z-50 backdrop-blur-md bg-white/30 border-b border-white/20;
+  }
+
+  .frosted-modal {
+    @apply backdrop-blur-xl bg-white/60 border border-white/40 shadow-2xl;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-linear-to-r from-green-600 to-green-400;
+  }
+
+  .btn-gradient {
+    @apply bg-linear-to-r from-green-500 to-green-400 text-white transition-all duration-300;
+  }
+
+  .btn-gradient:hover {
+    @apply from-green-600 to-green-500 shadow-lg shadow-green-200/50 scale-105;
+  }
+
+  .toast-success {
+    @apply !bg-green-50 !border-green-200 !text-green-800 !rounded-2xl !shadow-xl !shadow-green-500/10;
+  }
+
+  .toast-error {
+    @apply !bg-red-50 !border-red-200 !text-red-800 !rounded-2xl !shadow-xl !shadow-red-500/10;
+  }
+
+  .character-card {
+    @apply bg-white/80 border border-slate-200 rounded-3xl p-5 transition-all hover:shadow-xl hover:shadow-green-500/5 hover:border-green-200;
+  }
+
+  .character-card.is-default {
+    @apply border-green-400 ring-4 ring-green-500/10;
+  }
+
+  .script-table {
+    @apply w-full border-separate border-spacing-y-3;
+  }
+
+  .script-table th {
+    @apply text-left text-xs font-bold text-slate-400 uppercase tracking-widest px-4 py-2;
+  }
+
+  .script-table td {
+    @apply bg-white border-y border-slate-100 px-4 py-4 first:rounded-l-2xl first:border-l last:rounded-r-2xl last:border-r align-middle;
+  }
+
+  .loading-shimmer {
+    background: linear-gradient(90deg, #f0fdf4 25%, #dcfce7 50%, #f0fdf4 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  .flash-copy {
+    animation: flash-animation 0.5s ease-out;
+  }
+
+  @keyframes flash-animation {
+    0% { background-color: rgba(34, 197, 94, 0.3); }
+    100% { background-color: transparent; }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+}
